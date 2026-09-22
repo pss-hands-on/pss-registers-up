@@ -1,0 +1,82 @@
+# pss-hands-on/pss-registers-up -- GitHub Actions.
+#
+# COPY THIS AS A PAIR. Its counterpart is .forgejo/workflows/ci.yml. If
+# .forgejo/workflows/ is absent the Forgejo runner falls back to running THIS
+# FILE. The two differ only where the forges do: the Forgejo side adds the
+# internal-identifier check and uses forgejo/upload-artifact, and has no CTRF
+# reporter (the action is not on its mirror, and Forgejo renders no job
+# summary to put it in). If you are changing anything else, they are drifting.
+#
+# What runs is ci/run.sh -- the same script on both forges, and on a laptop.
+# This file only sets up the cache, calls it, and shows the results.
+#
+# NOTHING HERE PUBLISHES. That is why there is no release-authority `gate` job
+# (see dvkit/forgejo-ops templates/). If a publish job is ever added, add the
+# gate with it, on both sides.
+
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  # The CTRF reporter's job summary and annotations need no more than this.
+  contents: read
+
+jobs:
+  checks:
+    name: Lint and smoke tests
+    # 24.04, not ubuntu-latest: pssc requires Python >= 3.12, and on the
+    # Forgejo runner ubuntu-latest is a 22.04 image with Python 3.10. Named
+    # the same on both sides so the two runs are the same environment.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Restore the ivpm package cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ivpm
+          key: ivpm-${{ runner.os }}-${{ hashFiles('ivpm.yaml') }}
+          restore-keys: |
+            ivpm-${{ runner.os }}-
+
+      - name: Lint and smoke tests
+        # ci/run.sh points IVPM_CACHE at ~/.cache/ivpm, the path cached above.
+        run: ci/run.sh
+
+      # One reporter per check, so each gets its own titled table: lint's
+      # accepted findings (baselined or waived, reported as skipped) would
+      # otherwise bury the smoke results. `failed` rows are what changed --
+      # a new lint finding, or a case that did not pass.
+      - name: Smoke test results
+        if: always()
+        uses: ctrf-io/github-test-reporter@v1
+        with:
+          report-path: ci-reports/ctrf/smoke.json
+          title: Smoke tests
+          summary-report: true
+          test-report: true
+          failed-report: true
+          exit-on-no-files: false
+
+      - name: Lint results
+        if: always()
+        uses: ctrf-io/github-test-reporter@v1
+        with:
+          report-path: ci-reports/ctrf/lint.json
+          title: RTL lint
+          summary-report: true
+          failed-report: true
+          exit-on-no-files: false
+
+      - name: Upload the reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-reports
+          path: ci-reports/
+          if-no-files-found: warn

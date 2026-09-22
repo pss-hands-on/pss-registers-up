@@ -97,6 +97,11 @@ package:
       src: pypi
     - name: dv-flow-librdl
       src: pypi
+    # Not published on PyPI -- fetch from git, `deps: skip` for the same reason
+    # as dv-flow-libproject below. flow.yaml imports `hdllint` for lint-rtl.
+    - name: dv-flow-libhdllint
+      url: https://github.com/dv-flow/dv-flow-libhdllint.git
+      deps: skip
     # Not published on PyPI -- fetch from git. `deps: skip` for the same reason
     # as the `design` entries: its manifest is a developer environment.
     - name: dv-flow-libproject

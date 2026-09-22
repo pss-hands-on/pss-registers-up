@@ -23,6 +23,7 @@ dfm run tests          # build and run the regression
 dfm run tests-info                     # what cases and views exist -- builds nothing
 dfm run tests                          # the whole regression (sw_copy, arb, err, pss_hello)
 dfm run tests --tests sw_copy          # one case; nothing else is even built
+dfm run smoke                          # the quick subset CI runs (sw_copy, pss_hello)
 dfm run tests -D build=dbg             # -O0 + waveform tracing
 ```
 
@@ -38,8 +39,27 @@ dfm run lint -D lint.update_baseline=true   # refresh lint-baseline.json
 ```
 
 `wb_dma` is unmodified third-party RTL, so its existing findings are accepted in
-`lint-baseline.json`; only new findings fail the run. `lint-rtl` needs
-dv-flow-libhdllint, which the `dev-src` dep-set fetches (`ivpm update -d dev-src`).
+`lint-baseline.json`; only new findings fail the run.
+
+## CI
+
+Every push and pull request runs `lint-rtl` and `smoke` (the `sw_copy` and
+`pss_hello` cases), on both GitHub and the project's Forgejo mirror. Both
+forges run the same script, which also runs locally:
+
+```bash
+ci/run.sh                        # fresh ivpm venv + `ivpm update -d dev-src`, then both checks
+CI_SKIP_BOOTSTRAP=1 ci/run.sh    # just the checks, using the packages/ you already have
+```
+
+The reports land in `ci-reports/`: a `dfm --report` bundle per check, the lint
+SARIF and JSON, the smoke JUnit, and CTRF for both (`ci-reports/ctrf/`). On
+GitHub the CTRF files are rendered into the job summary; on Forgejo, which has
+no job summary, the reports are folded into the log and uploaded as an
+artifact.
+
+CI builds the dv-flow libraries, pssc and zuspec from source (`dev-src`) until
+their PyPI releases catch up with what this project uses.
 
 ## Layout
 
@@ -49,7 +69,8 @@ dv-flow-libhdllint, which the `dev-src` dep-set fetches (`ivpm update -d dev-src
 | `src/rdl/` | SystemRDL register description -- the source of truth for the register map, and what the UVM RAL is generated from |
 | `src/rtl/` | The DUT fileset (the RTL itself is fetched by IVPM into `packages/wb_dma`) |
 | `tests/uvm/` | The UVM environment (`env/`), scenarios and tests (`tests/`), and the HDL/HVL tops (`tb/`) |
-| `flow.yaml` | The project: it inherits the `project.dv.uvm` archetype from [dv-flow-libproject](https://github.com/dv-flow/dv-flow-libproject) and fills in its slots (`src-rtl`, `tests`, `lint-rtl`) |
+| `flow.yaml` | The project: it inherits the `project.dv.uvm` archetype from [dv-flow-libproject](https://github.com/dv-flow/dv-flow-libproject) and fills in its slots (`src-rtl`, `tests`, `smoke`, `lint-rtl`) |
+| `ci/run.sh`, `.github/workflows/`, `.forgejo/workflows/` | CI (see CI) |
 | `lint-baseline.json`, `lint-waivers.yaml` | Accepted DUT lint findings, and waivers (see Lint) |
 | `docs/rtl-uvm-tb-design.md` | Why the bench is shaped the way it is -- the device quirks it works around |
 

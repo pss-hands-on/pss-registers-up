@@ -232,3 +232,7 @@ rundir/
 
 # Working notes: kept on disk, deliberately untracked.
 docs/notes/
+
+# ci/run.sh: its ivpm venv and the collected reports.
+.ci-venv/
+ci-reports/

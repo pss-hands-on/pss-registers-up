@@ -46,6 +46,15 @@ package:
     # by short name.
     needs: [uvm.uvm-tests]
 
+  # The quick subset: what CI runs on every commit (via `ci-checks`, alongside
+  # lint). One case per concern -- sw_copy exercises the DMA datapath through
+  # the RAL, pss_hello the PSS-generated sequence path -- so a break in either
+  # half shows up here without paying for the whole suite.
+  - override: smoke
+    needs: [uvm.uvm-tests]
+    with:
+      tests: [sw_copy, pss_hello]
+
   # Fills the archetype's `lint-rtl` slot. The slot only asks for a task to
   # put in `needs:`; everything about HOW lint runs lives in `lint` below.
   - override: lint-rtl
