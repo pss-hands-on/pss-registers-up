@@ -21,6 +21,10 @@
 #*   CI_REPORTS   where the reports are collected (default: ci-reports)
 #*   IVPM_CACHE   ivpm's package cache (default: ~/.cache/ivpm, the path the
 #*                workflows cache between runs)
+#*   CI_CACHE_DAYS
+#*                prune cache entries not linked for this many days
+#*                (default: 14; see ci/ivpm-cache-key.sh for why the saved
+#*                cache stays fresh enough for this to be safe)
 #*   CI_SKIP_BOOTSTRAP=1
 #*                use packages/ as it is -- on a laptop that already has it,
 #*                this is just the two checks and the reports
@@ -58,6 +62,12 @@ if [ "${CI_SKIP_BOOTSTRAP:-0}" != "1" ]; then
     # developer's insteadOf rewrite does not exist here anyway.
     .ci-venv/bin/ivpm update -a -d "$dep_set" \
         || { echo "::error::ivpm update -d $dep_set failed"; exit 1; }
+    # Drop cache entries no run has linked for a while -- a tool version
+    # edapack has moved past -- so the saved cache does not grow without
+    # bound. Age is last-LINKED, which this update just refreshed for
+    # everything in use.
+    .ci-venv/bin/ivpm cache clean --days "${CI_CACHE_DAYS:-14}" \
+        || echo "::warning::ivpm cache clean failed; the cache is unchanged"
     direnv allow . || exit 1
     endgroup
 fi

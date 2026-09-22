@@ -61,6 +61,11 @@ artifact.
 CI builds the dv-flow libraries, pssc and zuspec from source (`dev-src`) until
 their PyPI releases catch up with what this project uses.
 
+Prebuilt tools (Verilator, from edapack) come through the ivpm cache, which
+both workflows keep between runs. It is saved under a key naming what it
+holds (`ci/ivpm-cache-key.sh`), so a new tool release is fetched once and then
+cached, and `ci/run.sh` prunes entries no run has used for 14 days.
+
 ## Layout
 
 | Path | What |
@@ -70,7 +75,7 @@ their PyPI releases catch up with what this project uses.
 | `src/rtl/` | The DUT fileset (the RTL itself is fetched by IVPM into `packages/wb_dma`) |
 | `tests/uvm/` | The UVM environment (`env/`), scenarios and tests (`tests/`), and the HDL/HVL tops (`tb/`) |
 | `flow.yaml` | The project: it inherits the `project.dv.uvm` archetype from [dv-flow-libproject](https://github.com/dv-flow/dv-flow-libproject) and fills in its slots (`src-rtl`, `tests`, `smoke`, `lint-rtl`) |
-| `ci/run.sh`, `.github/workflows/`, `.forgejo/workflows/` | CI (see CI) |
+| `ci/run.sh`, `ci/ivpm-cache-key.sh`, `.github/workflows/`, `.forgejo/workflows/` | CI (see CI) |
 | `lint-baseline.json`, `lint-waivers.yaml` | Accepted DUT lint findings, and waivers (see Lint) |
 | `docs/rtl-uvm-tb-design.md` | Why the bench is shaped the way it is -- the device quirks it works around |
 

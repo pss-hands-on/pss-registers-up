@@ -5,7 +5,10 @@
 # FILE. The two differ only where the forges do: the Forgejo side adds the
 # internal-identifier check and uses forgejo/upload-artifact, and has no CTRF
 # reporter (the action is not on its mirror, and Forgejo renders no job
-# summary to put it in). If you are changing anything else, they are drifting.
+# summary to put it in). This side also passes GITHUB_TOKEN to ci/run.sh
+# (on Forgejo that token is not a GitHub one) and uses actions/cache v5 (the
+# Forgejo mirror is tested on v4). If you are changing anything else, they
+# are drifting.
 #
 # What runs is ci/run.sh -- the same script on both forges, and on a laptop.
 # This file only sets up the cache, calls it, and shows the results.
@@ -36,17 +39,46 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # The ivpm cache holds the prebuilt tools (Verilator, from edapack).
+      # Restore and save are separate steps so the save key can name what the
+      # cache HOLDS after ci/run.sh, not what ivpm.yaml says -- see
+      # ci/ivpm-cache-key.sh. The prefix restores the newest saved cache;
+      # ivpm fetches only what it lacks, and ci/run.sh prunes what no run uses.
       - name: Restore the ivpm package cache
-        uses: actions/cache@v4
+        id: ivpm-restore
+        uses: actions/cache/restore@v5
         with:
           path: ~/.cache/ivpm
-          key: ivpm-${{ runner.os }}-${{ hashFiles('ivpm.yaml') }}
+          key: ivpm-${{ runner.os }}-
           restore-keys: |
             ivpm-${{ runner.os }}-
 
       - name: Lint and smoke tests
         # ci/run.sh points IVPM_CACHE at ~/.cache/ivpm, the path cached above.
+        env:
+          # Lets ivpm resolve edapack's `latest` releases through the GitHub
+          # API when its unauthenticated path cannot: anonymous API calls get
+          # 60 an hour, shared by every job on the runner's address.
+          GITHUB_TOKEN: ${{ github.token }}
         run: ci/run.sh
+
+      - name: Compute the ivpm cache key
+        id: ivpm-key
+        if: always()
+        run: |
+          k=$(ci/ivpm-cache-key.sh)
+          echo "key=${k:+ivpm-${{ runner.os }}-$k}" >> "$GITHUB_OUTPUT"
+
+      - name: Save the ivpm package cache
+        # Only when the contents changed (and there are some): an unchanged
+        # cache is already saved under this key.
+        if: >-
+          always() && steps.ivpm-key.outputs.key != '' &&
+          steps.ivpm-key.outputs.key != steps.ivpm-restore.outputs.cache-matched-key
+        uses: actions/cache/save@v5
+        with:
+          path: ~/.cache/ivpm
+          key: ${{ steps.ivpm-key.outputs.key }}
 
       # One reporter per check, so each gets its own titled table: lint's
       # accepted findings (baselined or waived, reported as skipped) would
