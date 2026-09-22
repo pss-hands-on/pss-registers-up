@@ -1,0 +1,15 @@
+# Lint waivers for this project.
+#
+# A waiver says "this finding is acceptable, and here is why". It is matched
+# against normalized findings after the tools run, so the same file works for
+# every lint backend. `rule` and `path` are globs, where `*` crosses directory
+# separators. `reason` is required.
+#
+# Prefer the BASELINE (lint-baseline.json) for bulk pre-existing findings in
+# the third-party DUT. Waivers are for the handful that are genuinely fine and
+# should stay fine -- each one is a claim somebody has to be able to defend.
+#
+# A waiver that matches nothing is reported as a warning: it means the finding
+# was either fixed (delete the waiver) or moved (fix the waiver).
+
+waivers: []

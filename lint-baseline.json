@@ -1,0 +1,351 @@
+{
+  "version": 1,
+  "tools": [
+    "vlt"
+  ],
+  "total": 97,
+  "entries": [
+    {
+      "key": "vlt|CASEINCOMPLETE|packages/wb_dma/rtl/verilog/wb_dma_ch_arb.v|Case values incompletely covered (example pattern #x#f)",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "CASEINCOMPLETE",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_arb.v",
+      "severity": "warning",
+      "msg": "Case values incompletely covered (example pattern 0x1f)"
+    },
+    {
+      "key": "vlt|CASEINCOMPLETE|packages/wb_dma/rtl/verilog/wb_dma_ch_pri_enc.v|Case values incompletely covered (example pattern #x#)",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "CASEINCOMPLETE",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_pri_enc.v",
+      "severity": "warning",
+      "msg": "Case values incompletely covered (example pattern 0x3)"
+    },
+    {
+      "key": "vlt|CASEINCOMPLETE|packages/wb_dma/rtl/verilog/wb_dma_ch_sel.v|Case values incompletely covered (example pattern #x#f)",
+      "count": 10,
+      "tool": "vlt",
+      "rule": "CASEINCOMPLETE",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_sel.v",
+      "severity": "warning",
+      "msg": "Case values incompletely covered (example pattern 0x1f)"
+    },
+    {
+      "key": "vlt|CASEINCOMPLETE|packages/wb_dma/rtl/verilog/wb_dma_de.v|Case values incompletely covered (example pattern #x#)",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "CASEINCOMPLETE",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Case values incompletely covered (example pattern 0x0)"
+    },
+    {
+      "key": "vlt|CASEINCOMPLETE|packages/wb_dma/rtl/verilog/wb_dma_pri_enc_sub.v|Case values incompletely covered (example pattern #x#)",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "CASEINCOMPLETE",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_pri_enc_sub.v",
+      "severity": "warning",
+      "msg": "Case values incompletely covered (example pattern 0x3)"
+    },
+    {
+      "key": "vlt|CASEINCOMPLETE|packages/wb_dma/rtl/verilog/wb_dma_rf.v|Case values incompletely covered (example pattern #x#)",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "CASEINCOMPLETE",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_rf.v",
+      "severity": "warning",
+      "msg": "Case values incompletely covered (example pattern 0x5)"
+    },
+    {
+      "key": "vlt|DECLFILENAME|packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v|Filename 'wb_dma_ch_rf' does not match MODULE name: 'wb_dma_ch_rf_dummy'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "DECLFILENAME",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v",
+      "severity": "warning",
+      "msg": "Filename 'wb_dma_ch_rf' does not match MODULE name: 'wb_dma_ch_rf_dummy'"
+    },
+    {
+      "key": "vlt|UNDRIVEN|packages/wb_dma/rtl/verilog/wb_dma_top.v|Bits of signal are not driven: 'dma_nd'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNDRIVEN",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not driven: 'dma_nd'[30:1]"
+    },
+    {
+      "key": "vlt|UNDRIVEN|packages/wb_dma/rtl/verilog/wb_dma_top.v|Bits of signal are not driven: 'dma_req'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNDRIVEN",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not driven: 'dma_req'[30:1]"
+    },
+    {
+      "key": "vlt|UNDRIVEN|packages/wb_dma/rtl/verilog/wb_dma_top.v|Bits of signal are not driven: 'dma_rest'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNDRIVEN",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not driven: 'dma_rest'[30:1]"
+    },
+    {
+      "key": "vlt|UNUSEDPARAM|packages/wb_dma/rtl/verilog/wb_dma_ch_pri_enc.v|Parameter is not used: 'ch#_conf'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDPARAM",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_pri_enc.v",
+      "severity": "warning",
+      "msg": "Parameter is not used: 'ch0_conf'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_ch_pri_enc.v|Bits of signal are not used: 'pri_out_tmp'[#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_pri_enc.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'pri_out_tmp'[0]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v|Bits of signal are not used: 'de_adr#'[#:#]",
+      "count": 2,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'de_adr0'[1:0]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v|Bits of signal are not used: 'de_csr'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'de_csr'[3:0]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v|Signal is not driven, nor used: 'ch_err_r'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v",
+      "severity": "warning",
+      "msg": "Signal is not driven, nor used: 'ch_err_r'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_ch_sel.v|Signal is not driven, nor used: 'gnt_p#'",
+      "count": 23,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_sel.v",
+      "severity": "warning",
+      "msg": "Signal is not driven, nor used: 'gnt_p8'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_ch_sel.v|Signal is not driven, nor used: 'req_p#'",
+      "count": 23,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_sel.v",
+      "severity": "warning",
+      "msg": "Signal is not driven, nor used: 'req_p8'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_de.v|Bits of signal are not used: 'adr#'[#:#]",
+      "count": 2,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'adr0'[1:0]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_de.v|Bits of signal are not used: 'am#'[#:#]",
+      "count": 2,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'am0'[3:0]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_de.v|Bits of signal are not used: 'pointer'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'pointer'[3:1]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_de.v|Bits of signal are not used: 'txsz'[#:#,#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'txsz'[31:25,14:12]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_de.v|Signal is not used: 'dma_done_r'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'dma_done_r'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_de.v|Signal is not used: 'rd_ack_r'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_de.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'rd_ack_r'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_rf.v|Bits of signal are not used: 'csr_r'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_rf.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'csr_r'[7:1]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_rf.v|Signal is not used: 'ch_dis'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_rf.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'ch_dis'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Bits of signal are not used: 'dma_ack'[#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'dma_ack'[30:1]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Bits of signal are not used: 'slv#_adr'[#:#,#:#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'slv0_adr'[31:10,1:0]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Bits of signal are not used: 'tmp_gnd'[#]",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Bits of signal are not used: 'tmp_gnd'[31]"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Signal is not used: 'slv#_adr'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'slv1_adr'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Signal is not used: 'slv#_dout'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'slv1_dout'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Signal is not used: 'slv#_re'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'slv1_re'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_top.v|Signal is not used: 'slv#_we'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'slv1_we'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_wb_mast.v|Signal is not used: 'rst'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_wb_mast.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'rst'"
+    },
+    {
+      "key": "vlt|UNUSEDSIGNAL|packages/wb_dma/rtl/verilog/wb_dma_wb_slv.v|Signal is not used: 'rst'",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "UNUSEDSIGNAL",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_wb_slv.v",
+      "severity": "warning",
+      "msg": "Signal is not used: 'rst'"
+    },
+    {
+      "key": "vlt|WIDTHEXPAND|packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v|Operator ASSIGNDLY expects # bits on the Assign RHS, but Assign RHS's CONST '#'h#' generates # bits.",
+      "count": 4,
+      "tool": "vlt",
+      "rule": "WIDTHEXPAND",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v",
+      "severity": "warning",
+      "msg": "Operator ASSIGNDLY expects 28 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits."
+    },
+    {
+      "key": "vlt|WIDTHEXPAND|packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v|Operator ASSIGNDLY expects # bits on the Assign RHS, but Assign RHS's SEL generates # bits.",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "WIDTHEXPAND",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_ch_rf.v",
+      "severity": "warning",
+      "msg": "Operator ASSIGNDLY expects 30 bits on the Assign RHS, but Assign RHS's SEL generates 28 bits."
+    },
+    {
+      "key": "vlt|WIDTHTRUNC|packages/wb_dma/rtl/verilog/wb_dma_inc30r.v|Operator ASSIGNW expects # bits on the Assign RHS, but Assign RHS's VARREF 'out_r' generates # bits.",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "WIDTHTRUNC",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_inc30r.v",
+      "severity": "warning",
+      "msg": "Operator ASSIGNW expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'out_r' generates 17 bits."
+    },
+    {
+      "key": "vlt|WIDTHTRUNC|packages/wb_dma/rtl/verilog/wb_dma_top.v|Operator ASSIGNW expects # bits on the Assign RHS, but Assign RHS's REPLICATE generates # bits.",
+      "count": 1,
+      "tool": "vlt",
+      "rule": "WIDTHTRUNC",
+      "path": "packages/wb_dma/rtl/verilog/wb_dma_top.v",
+      "severity": "warning",
+      "msg": "Operator ASSIGNW expects 1 bits on the Assign RHS, but Assign RHS's REPLICATE generates 32 bits."
+    }
+  ]
+}

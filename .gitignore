@@ -216,3 +216,19 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+
+.agents/
+.claude/
+.codex/
+.cursor/
+
+packages/
+rundir/
+
+# The UVM environment, not a Python virtualenv: exempt it from the `env/` rule above.
+!tests/uvm/env/
+# The project .envrc only sources the IVPM-generated packages/packages.envrc; `direnv allow` needs it.
+!/.envrc
+
+# Working notes: kept on disk, deliberately untracked.
+docs/notes/
