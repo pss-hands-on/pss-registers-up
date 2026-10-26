@@ -6,6 +6,8 @@
  * export API gets one task per name. The model declares behaviour; the tool
  * invocation decides what is exported.
  */
+import std_pkg::*;
+
 extend component pss_top {
 
     action entry_a {
