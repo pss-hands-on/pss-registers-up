@@ -93,6 +93,12 @@ run_check() {
 
 run_check lint-rtl
 run_check smoke
+# On a lab branch the lab's own case fails until the lab is done; it is named
+# in tests/expected-fail.txt and does not fail CI (see docs/labs/README.md).
+if [ "${status[smoke]}" != "0" ] && [ -f tests/expected-fail.txt ] \
+        && ci/check-expected.sh; then
+    status[smoke]=0
+fi
 
 # ---- 3. collect -------------------------------------------------------------
 # Task rundirs are named for the task, not the verb: lint-rtl's work is done by
