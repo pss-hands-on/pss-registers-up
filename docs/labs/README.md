@@ -7,8 +7,8 @@ Each lab adds a little to the last; nothing is thrown away.
 | Lab | Branch | Topic | Doc |
 |---|---|---|---|
 | 00 | `main` | Hello PSS: the PSS → UVM build | [lab00.md](lab00.md) |
-| 01 | `lab01` | Registers | lab01.md |
-| 02 | `lab02` | A randomised single transfer | lab02.md |
+| 01 | `lab01` | Registers | [lab01.md](lab01.md) |
+| 02 | `lab02` | A randomised single transfer | [lab02.md](lab02.md) |
 | 03 | `lab03` | Memory as a resource | lab03.md |
 | 04 | `lab04` | Channels as resources; concurrency | lab04.md |
 | 05 | `lab05` | Interrupts, events and sync | lab05.md |
